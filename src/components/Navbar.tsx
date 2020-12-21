@@ -6,8 +6,13 @@ import { HashLink } from "react-router-hash-link";
 interface NavProps {
   isOpen: boolean;
 }
+
+const hashLinks: string[] = ["About Me", "Portfolio", "CV", "Contact"];
+
 function Navbar({ isOpen }: NavProps) {
-  const isMobile: boolean = useMediaQuery({ query: "(max-width: 700px)" });
+  const [activeLink, setActiveLink] = useState<null | string>(null);
+  const [drawerIsOpen, toggleNavDrawer] = useState<boolean>(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const location = useLocation();
 
   return (
@@ -17,9 +22,40 @@ function Navbar({ isOpen }: NavProps) {
         style={isOpen ? { height: "auto" } : { height: "56px" }}
       >
         <div>
-          <NavLink to="/">
-            <img src="" alt="Logo icon" />
+          <NavLink to="/" exact>
+            <img
+              src="https://timsportfolio2020.s3-us-west-2.amazonaws.com/horizontal-dark-color-270x72.png"
+              alt="Logo icon"
+            />
           </NavLink>
+        </div>
+        <div></div>
+        {hashLinks.map((link) => {
+          return (
+            <div
+              key={link}
+              className={activeLink === link ? "nav-link-active" : "nav-link"}
+            //   style={
+            //     isOpen ? { visibility: "visible" } : { visibility: "hidden" }
+            //   }
+            >
+              <HashLink
+                to={`#${link.replace(" ", "-").toLowerCase()}`}
+                onClick={() => setActiveLink(link)}
+              >
+                {link}
+              </HashLink>
+            </div>
+          );
+        })}
+
+        <div
+          className="hamburger-button"
+          onClick={() => {
+            return null;
+          }}
+        >
+          &#x2630;
         </div>
       </div>
     </nav>

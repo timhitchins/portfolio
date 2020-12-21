@@ -6,3 +6,78 @@
   width: 100%;
   background-color: $black;
 }
+
+.nav-inner-container {
+  margin: 0 auto;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+  align-items: center;
+
+  .nav-link-active {
+    background-color: $black;
+    color: $gray-light;
+  }
+
+  // spacer
+  div:nth-child(2) {
+    flex: 1;
+  }
+
+  //logo
+  div > a > img {
+    max-height: 45px;
+  }
+}
+
+.nav-link {
+  padding: 10px;
+  margin: 0 15px;
+  border-bottom: 2px solid $black;
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $gray-light;
+  }
+
+  a:hover {
+    color: $teal-light;
+  }
+
+  &-active {
+    @extend .nav-link;
+    border-bottom: 2px solid $teal-light;
+  }
+}
+
+.hamburger-button {
+  @extend .nav-link;
+  display: none;
+  color: $gray-light;
+  font-size: 1.2rem;
+}
+
+.hamburger-button:hover {
+  color: $teal-light;
+}
+
+//mobile and tablet
+@media (max-width: 700px) {
+  .nav-inner-container {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: flex-start;
+  }
+
+
+
+  .hamburger-button {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
