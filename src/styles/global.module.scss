@@ -1,6 +1,12 @@
 //global sass vars
-$mobile-break: "600px";
+
+//breaks
+$mobile-break: "700px";
+
+//boundaries
+$max-width: 1200px;
 
 :export {
   mobileBreak: $mobile-break;
+  maxWidth: $max-width;
 }
