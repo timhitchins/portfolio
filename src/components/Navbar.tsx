@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useLocation, NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import styles from "../styles/global.module.scss";
 
 interface NavProps {
   isOpen: boolean;
@@ -12,7 +13,7 @@ const hashLinks: string[] = ["About Me", "Portfolio", "CV", "Contact"];
 function Navbar({ isOpen }: NavProps) {
   const [activeLink, setActiveLink] = useState<null | string>(null);
   const [drawerIsOpen, toggleNavDrawer] = useState<boolean>(false);
-  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
+  const isMobile = useMediaQuery({ query: `(max-width: ${styles.mobileBreak}` });
   const location = useLocation();
 
   return (
@@ -35,9 +36,6 @@ function Navbar({ isOpen }: NavProps) {
             <div
               key={link}
               className={activeLink === link ? "nav-link-active" : "nav-link"}
-            //   style={
-            //     isOpen ? { visibility: "visible" } : { visibility: "hidden" }
-            //   }
             >
               <HashLink
                 to={`#${link.replace(" ", "-").toLowerCase()}`}

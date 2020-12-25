@@ -65,14 +65,13 @@
 }
 
 //mobile and tablet
-@media (max-width: 700px) {
+@media (max-width: $mobile-break) {
   .nav-inner-container {
     flex-direction: column;
     justify-content: unset;
     align-items: flex-start;
+    overflow: hidden;
   }
-
-
 
   .hamburger-button {
     display: inline-block;

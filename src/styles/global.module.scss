@@ -1,0 +1,6 @@
+//global sass vars
+$mobile-break: "600px";
+
+:export {
+  mobileBreak: $mobile-break;
+}
